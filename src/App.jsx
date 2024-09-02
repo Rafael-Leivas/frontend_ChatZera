@@ -1,22 +1,11 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import Chat from './components/Chat/Chat'
 
 function App() {
   const [body, setBody] = useState('')
   const [message, setMessage] = useState('')
   const [senderName, setSenderName] = useState('')
-
-  useEffect(() => {
-    axios.get('http://localhost:8000/')
-      .then(response => {
-        const data = response.data
-        setBody(data['message'])
-      })
-      .catch((e) => {
-        console.error(e)
-        setBody('Error')
-      })
-  }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -45,29 +34,8 @@ function App() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Mensagem:
-          <input
-            type="text"
-            name="message"
-            value={message}
-            onChange={handleChange}  // Atualiza o estado 'message' quando o usuário digita
-          />
-        </label>
-        <label>
-          Responsável:
-          <input
-            type="text"
-            name="sender_name"
-            value={senderName}
-            onChange={handleChange}  // Atualiza o estado 'senderName' quando o usuário digita
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
       <div>
-        {body}
+        <Chat />
       </div>
     </>
   )
