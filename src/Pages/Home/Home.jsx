@@ -1,8 +1,10 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import Chat from './components/Chat/Chat'
+import Chat from '../../components/Chat/Chat'
+import st from '../Home/Home.module.css'
+import { FaGithub } from "react-icons/fa6";
 
-function App() {
+function Home() {
   const [body, setBody] = useState('')
   const [message, setMessage] = useState('')
   const [senderName, setSenderName] = useState('')
@@ -34,11 +36,15 @@ function App() {
 
   return (
     <>
+      <header>
+        <h1 className={st.logo}> ChatZera</h1>
+        <a className={st.link_github} href="#"><FaGithub />  GitHub</a>
+      </header>
       <div>
-        <Chat />
+        {/* <Chat /> */}
       </div>
     </>
   )
 }
 
-export default App
+export default Home
