@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
 import st from './Chat.module.css';
 
-const Chat = (props) => {
+const Chat = ({ user }) => {
     const [message, setMessage] = useState('');
-    const [senderName, setSenderName] = useState(props.user);
     const [messages, setMessages] = useState([]);
 
     const { sendJsonMessage, lastJsonMessage } = useWebSocket('ws://localhost:8000/ws/chat', {
@@ -21,7 +20,7 @@ const Chat = (props) => {
 
     const handleSendMessage = () => {
         if (message.trim() !== '') {
-            sendJsonMessage({ message, sender_name: senderName });
+            sendJsonMessage({ message, sender_name: user });
             setMessage('');
         }
     };
@@ -30,7 +29,10 @@ const Chat = (props) => {
         <div className={st.chatContainer}>
             <div className={st.messageList}>
                 {messages.map((msg, index) => (
-                    <div key={index} className={st.messageItem}>
+                    <div
+                        key={index}
+                        className={`${st.messageItem} ${msg.sender_name === user ? st.userMessage : st.otherMessage}`}
+                    >
                         <span className={st.senderName}>{msg.sender_name}:</span> {msg.message}
                     </div>
                 ))}
