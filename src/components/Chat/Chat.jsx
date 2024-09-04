@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
+import st from './Chat.module.css';
 
-const Chat = () => {
+const Chat = (props) => {
     const [message, setMessage] = useState('');
-    const [senderName, setSenderName] = useState('User'); // Pode ser dinâmico
+    const [senderName, setSenderName] = useState(props.user);
     const [messages, setMessages] = useState([]);
 
     const { sendJsonMessage, lastJsonMessage } = useWebSocket('ws://localhost:8000/ws/chat', {
@@ -26,20 +27,25 @@ const Chat = () => {
     };
 
     return (
-        <div>
-            <input
-                type="text"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Digite uma mensagem"
-            />
-            <button onClick={handleSendMessage}>Enviar</button>
-            <div>
+        <div className={st.chatContainer}>
+            <div className={st.messageList}>
                 {messages.map((msg, index) => (
-                    <div key={index}>
-                        <strong>{msg.sender_name}:</strong> {msg.message}
+                    <div key={index} className={st.messageItem}>
+                        <span className={st.senderName}>{msg.sender_name}:</span> {msg.message}
                     </div>
                 ))}
+            </div>
+            <div className={st.messageInputContainer}>
+                <input
+                    type="text"
+                    className={st.messageInput}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Digite uma mensagem"
+                />
+                <button className={st.sendButton} onClick={handleSendMessage}>
+                    Enviar
+                </button>
             </div>
         </div>
     );
