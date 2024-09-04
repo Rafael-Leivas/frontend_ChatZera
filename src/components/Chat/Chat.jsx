@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
 import st from './Chat.module.css';
+import { RiGroup2Fill } from "react-icons/ri";
 
 const Chat = ({ user }) => {
     const [message, setMessage] = useState('');
@@ -27,13 +28,17 @@ const Chat = ({ user }) => {
 
     return (
         <div className={st.chatContainer}>
+            <div className={st.header}>
+                <p><RiGroup2Fill className={st.photo_group} /> Chat global</p>
+            </div>
             <div className={st.messageList}>
                 {messages.map((msg, index) => (
                     <div
                         key={index}
                         className={`${st.messageItem} ${msg.sender_name === user ? st.userMessage : st.otherMessage}`}
                     >
-                        <span className={st.senderName}>{msg.sender_name}:</span> {msg.message}
+                        {msg.sender_name !== user && <span className={st.senderName}>{msg.sender_name}:</span>}
+                        {msg.message}
                     </div>
                 ))}
             </div>

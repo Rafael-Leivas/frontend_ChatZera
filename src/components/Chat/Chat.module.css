@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* Chat.module.css */
 .chatContainer {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    max-width: 370px;
     margin: 0 auto;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -12,33 +11,49 @@
     background-color: #f9f9f9;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 16px;
+}
+
 .messageList {
     flex-grow: 1;
     margin-bottom: 16px;
     overflow-y: auto;
-    max-height: 300px;
+    height: 450px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 10px;
     padding: 8px;
-    background-color: #ffffff;
+    background-color: #d7d7d7;
 }
 
 .messageItem {
     margin-bottom: 8px;
-    padding: 8px;
-    border-radius: 4px;
+    padding: 10px 15px;
+    border-radius: 10px;
     word-wrap: break-word;
+    display: flex;
+    width: 60%;
 }
 
 .messageItem.userMessage {
-    background-color: #d1e7dd;
+    font-family: 'Poppins', sans-serif;
+    background-color: #095598;
+    color: #fff;
     text-align: right;
+    margin-left: auto; /* Adicionado para alinhar à direita */
 }
 
 .messageItem.otherMessage {
-    background-color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
     text-align: left;
+    margin-right: auto; /* Garantir que as mensagens de outros usuários fiquem alinhadas à esquerda */
 }
+
 
 .senderName {
     font-weight: bold;
@@ -53,20 +68,35 @@
     flex-grow: 1;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     margin-right: 8px;
 }
 
 .sendButton {
-    padding: 8px 16px;
-    background-color: #007bff;
+    padding: 8px 20px;
+    background-color: #267196;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .sendButton:hover {
-    background-color: #0056b3;
+    background-color: #003040;
+}
+
+.header p {
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1rem;
+}
+
+.photo_group {
+    color: #b7b7b7;
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
 }
