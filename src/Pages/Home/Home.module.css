@@ -5,14 +5,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* background-color: #267196; */
+    
+}
+
+body{
     background-color: #267196;
+    background-image: url('../../assets/img/elementRight.svg');
+    background-position: right top;
+    background-repeat: no-repeat;
 }
 
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #267196;
     padding: 0 8rem;
 }
 
@@ -37,4 +44,23 @@ header{
 
 .link_github:hover{
     color: #f7f7f7;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #003040;
+    padding: 1rem;
+    font-family: "Poppins", sans-serif;
+    color: #ffffff;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p{
+    margin: 0;
+    background-color: #003040;
 }

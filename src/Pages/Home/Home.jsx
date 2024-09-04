@@ -36,13 +36,18 @@ function Home() {
 
   return (
     <>
-      <header>
-        <h1 className={st.logo}> ChatZera</h1>
-        <a className={st.link_github} href="https://github.com/Rafael-Leivas"><FaGithub />  GitHub</a>
-      </header>
-      <div>
-        {/* <Chat /> */}
-      </div>
+      <body>
+        <header>
+          <h1 className={st.logo}> ChatZera</h1>
+          <a className={st.link_github} href="https://github.com/Rafael-Leivas"><FaGithub />  GitHub</a>
+        </header>
+        <div>
+          <Chat />
+        </div>
+        <footer>
+          <p>Copyright © Rafael Leivas. 2024 All rights reserved</p>
+        </footer>
+      </body>
     </>
   )
 }
