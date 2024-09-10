@@ -26,6 +26,13 @@ const Chat = ({ user }) => {
         }
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Impede a ação padrão do Enter (como a quebra de linha)
+            handleSendMessage();
+        }
+    };
+
     return (
         <div className={st.chatContainer}>
             <div className={st.header}>
@@ -48,6 +55,7 @@ const Chat = ({ user }) => {
                     className={st.messageInput}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     placeholder="Digite uma mensagem"
                 />
                 <button className={st.sendButton} onClick={handleSendMessage}>
