@@ -64,3 +64,11 @@ footer p{
     margin: 0;
     background-color: #003040;
 }
+
+.body{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    padding: 0 8rem;
+}

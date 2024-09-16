@@ -44,14 +44,14 @@
     background-color: #095598;
     color: #fff;
     text-align: right;
-    margin-left: auto; /* Adicionado para alinhar à direita */
+    margin-left: auto; 
 }
 
 .messageItem.otherMessage {
     font-family: 'Poppins', sans-serif;
     background-color: #fff;
     text-align: left;
-    margin-right: auto; /* Garantir que as mensagens de outros usuários fiquem alinhadas à esquerda */
+    margin-right: auto;
 }
 
 
