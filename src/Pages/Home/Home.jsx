@@ -6,11 +6,10 @@ import { FaGithub } from "react-icons/fa6";
 import UsernamePopup from '../../components/UsernamePopup/UsernamePopup';
 
 function Home() {
-  const [message, setMessage] = useState('');
   const [senderName, setSenderName] = useState(null);
 
   useEffect(() => {
-    const storedUsername = localStorage.getItem('username');
+    const storedUsername = sessionStorage.getItem('username');
     if (storedUsername) {
       setSenderName(storedUsername);
     }
@@ -18,31 +17,7 @@ function Home() {
 
   const handleUsernameSet = (username) => {
     setSenderName(username);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    axios.post('http://localhost:8000/chat', {
-      message: message,
-      sender_name: senderName  // Inclua o sender_name na requisição
-    })
-      .then(response => {
-        const data = response.data;
-        console.log(data);
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    if (name === "message") {
-      setMessage(value);
-    } else if (name === "sender_name") {
-      setSenderName(value);
-    }
+    sessionStorage.setItem('username', username);
   };
 
   return (
